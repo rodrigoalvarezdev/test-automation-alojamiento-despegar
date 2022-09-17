@@ -27,7 +27,7 @@ public class Drivers {
 			}
 			case EDGE:{
 				System.setProperty("webdriver.edge.driver", "./src/test/drivers/msedgedriver.exe");
-				System.out.println("");
+				System.out.println("se inicia edge");
 				driver = new EdgeDriver();
 				break;
 			}
