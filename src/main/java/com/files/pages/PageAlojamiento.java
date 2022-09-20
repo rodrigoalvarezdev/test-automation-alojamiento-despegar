@@ -44,10 +44,9 @@ public class PageAlojamiento extends BaseAlojamiento {
 		return cerrarModal;
 	}
 	
-	public void inputDestino(String text){
-		doubleClick(inputDestinoLocator);
-		doubleClick(inputDestinoLocator);
+	public void inputDestino(String text) throws InterruptedException{
 		click(inputDestinoLocator);
+		Thread.sleep(1000);
 		pressKey(inputDestinoLocator, Keys.CONTROL);
 		sendText(inputDestinoLocator, text);
 		waiting(menu);

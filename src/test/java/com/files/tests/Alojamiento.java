@@ -42,13 +42,13 @@ public class Alojamiento {
   }
   
   @Test(description = "validar happy path de alojamiento", enabled = true, dataProvider = "data")
-  public void test(String ciudad, String edad){
+  public void test(String ciudad, String edad) throws InterruptedException{
 	 page.closeModal();
 	 Assert.assertFalse(driver.findElement(page.modal()).isDisplayed(),"El modal no desapareció");
 	 page.inputDestino(ciudad);
 	 Assert.assertEquals("Mendoza, Mendoza, Argentina", page.textInputDestino(), "el texto no coincide");
 	 page.calendarioFechas();
-	 Assert.assertEquals("Jue, 15 Sep 202", page.textFechaEntrada(), "el texto no coincide");
+	 Assert.assertEquals("Jue, 15 Sep 2022", page.textFechaEntrada(), "el texto no coincide");
 	 Assert.assertEquals("Lun, 10 Oct 2022", page.textFechaSalida(), "el texto no coincide");
 	 page.inputHabitaciones(edad);
 	 Assert.assertEquals("4", page.textInputHabitacion(), "el texto no coincide");
