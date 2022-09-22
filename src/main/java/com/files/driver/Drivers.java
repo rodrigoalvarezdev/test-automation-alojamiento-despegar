@@ -32,7 +32,7 @@ public class Drivers {
 				break;
 			}
 			default:{
-				System.out.println("No se elige nigun navegador");
+				System.out.println("No se elige ningun navegador");
 				System.setProperty("webdriver.chrome.driver", "./src/test/drivers/chromedriver.exe");
 				System.out.println("Se inicia chrome");
 				driver = new ChromeDriver();
