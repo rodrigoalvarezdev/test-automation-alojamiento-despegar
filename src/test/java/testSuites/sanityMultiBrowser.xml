@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="sanityMultiBrowser">
+	<listeners>
+		<listener class-name="commons.Listeners"></listener>
+	</listeners>
+  <test thread-count="5" name="TestSanityChrome">
+  	<parameter name="browser" value="CHROME"></parameter>
+  	<groups>
+  		<run>
+  			<include name="sanity"></include>
+  		</run>
+  	</groups>
+    <classes>
+      <class name="com.files.tests.Alojamiento"/>
+    </classes>
+  </test>
+  
+   <test thread-count="5" name="TestSanityFirefox">
+  	<parameter name="browser" value="FIREFOX"></parameter>
+  	<groups>
+  		<run>
+  			<include name="sanity"></include>
+  		</run>
+  	</groups>
+    <classes>
+      <class name="com.files.tests.Alojamiento"/>
+    </classes>
+  </test>
+  
+   <test thread-count="5" name="TestSanityEdge">
+  	<parameter name="browser" value="EDGE"></parameter>
+  	<groups>
+  		<run>
+  			<include name="sanity"></include>
+  		</run>
+  	</groups>
+    <classes>
+      <class name="com.files.tests.Alojamiento"/>
+    </classes>
+  </test>   
+</suite> 

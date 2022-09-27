@@ -1,3 +1,3 @@
 https://github.com/rodrigoalvarezdev
 
-Nota: el pageobject aun no se modifica a pagefactory.
+Nota: se cambia modelo base a modelo page factory.

@@ -43,8 +43,4 @@ public class Drivers {
 		driver.get(url);
 		return driver;
 	}
-	
-	/*public static void cerrarBrowser(WebDriver driver) {
-		driver.quit();
-	}*/
 }

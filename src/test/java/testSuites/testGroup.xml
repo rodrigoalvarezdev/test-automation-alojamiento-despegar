@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="test">
+	<listeners>
+		<listener class-name="commons.Listeners"></listener>
+	</listeners>
+  <test thread-count="5" name="Test">
+  	<groups>
+  	 <run>
+  	 	<include name="test"/>
+  	 </run>
+  	</groups>
+    <classes>
+      <class name="com.files.tests.Alojamiento"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- test -->

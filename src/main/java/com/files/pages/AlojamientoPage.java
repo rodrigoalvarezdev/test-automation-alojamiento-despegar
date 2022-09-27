@@ -1,61 +1,67 @@
 package com.files.pages;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
-import java.util.Set;
+import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import com.files.utils.Helper;
 
-public class PageAlojamiento{
+public class AlojamientoPage{
 	public WebDriver driver;
 	private WebDriverWait wait;
-	@FindBy(xpath = "//i[@class='login-incentive--close shifu-3-icon-close -eva-3-mr-md']")
+	@FindBy(css = "i.login-incentive--close.shifu-3-icon-close.-eva-3-mr-md")
 	WebElement modal;
-	@FindBy(xpath = "//*[@class='sbox-places-destination--1xd0k']//input[@class='input-tag']")
+	@FindBy(css = "*.sbox-places-destination--1xd0k input.input-tag")
 	WebElement inputDestinoLocator;
-	@FindBy(xpath = "//*[@class='ac-container']")
+	@FindBy(css = "*.ac-container")
 	WebElement menu;
-	@FindBy(xpath = "//*[@class='ac-group-container'][1]//li[1]")
+	@FindBy(css = "*.ac-group-container:nth-child(1) li:nth-child(1)")
 	WebElement menuInputLoc;
-	@FindBy(xpath = "//*[@class='sbox5-dates-input1']//input[@class='input-tag']")
+	@FindBy(css = "*.sbox5-dates-input1 input.input-tag")
 	WebElement inputFechaEntLocator;
-	@FindBy(xpath = "//*[@class='sbox5-dates-input2']//input[@class='input-tag']")
+	@FindBy(css = "*.sbox5-dates-input2 input.input-tag")
 	WebElement inputFechaSalLocator;
 	@FindBy(xpath = "//*[@id='component-modals']//*[@class='sbox5-monthgrid'][1]//*[text()='30']")
 	WebElement diaEntradaLocator;
 	@FindBy(xpath = "//*[@id='component-modals']//*[@class='sbox5-monthgrid'][2]//*[text()='10']")
 	WebElement diaSalidaLocator;
-	@FindBy(xpath = "//*[@class='calendar-footer-cta-container']//button[@type='button']")
+	@FindBy(css = "*.calendar-footer-cta-container button[type='button']")
 	WebElement btnaplicarCalenLocator;
-	@FindBy(xpath = "//*[@class='sbox5-3-double-input']//input[@class='sbox5-3-second-input']")
+	@FindBy(css = "*.sbox5-3-double-input input.sbox5-3-second-input")
 	WebElement inputHabLocator;
-	@FindBy(xpath = "//*[@class='stepper__distribution_container']/*[1]//button[@class='steppers-icon-right stepper__icon']")
-	WebElement btnMasAdulto;
 	@FindBy(xpath = "//span[text()='Adultos']//parent::*//following::*//button[@class='steppers-icon-right stepper__icon']")
+	WebElement btnMasAdulto;
+	@FindBy(xpath = "//span[text()='Adultos']//parent::*//following::*//button[@class='steppers-icon-left stepper__icon']")
 	WebElement btnMenosAdulto;
 	@FindBy(xpath = "//span[text()='Menores']//parent::*//following::*//button[@class='steppers-icon-right stepper__icon']")
 	WebElement btnMasNino;
-	@FindBy(xpath = "//span[text()='Menores']//parent::div//following::div//button[@class='steppers-icon-left stepper__icon']")
+	@FindBy(xpath = "//span[text()='Menores']//parent::*//following::*//button[@class='steppers-icon-left stepper__icon']")
 	WebElement btnMenosNino; 
-	@FindBy(xpath = "//*[@class='stepper__distribution_container']//*[@class='stepper__room__row'][3]//select[@class='select']")
+	@FindBy(css = "*.stepper__distribution_container *.stepper__room__row:nth-child(3) select")
 	WebElement selectNino; 
-	@FindBy(xpath = "//a[@class='sbox5-3-btn -md -primary']")
+	@FindBy(css = "a.sbox5-3-btn.-md.-primary")
 	WebElement btnAplicarHabLocator;
-	@FindBy(xpath = "//*[@class='sbox5-box-container']//button")
-	WebElement btnBuscar; 
+	@FindBy(css = "*.sbox5-box-container button")
+	WebElement btnBuscar;
+	@FindBy(css = "ul.header-list-products>li>a")
+	List<WebElement> linksList;
 		
-	public PageAlojamiento(WebDriver driver) {
+	public AlojamientoPage(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(6));
 		PageFactory.initElements(driver, this);
+	}
+	
+	public WebElement returnInput() {
+		return inputDestinoLocator;
 	}
 	
 	public void closeModal() {
@@ -112,8 +118,13 @@ public class PageAlojamiento{
 		return inputHabLocator.getAttribute("value");
 	}
 	
-	public PageHoteles clickBuscar() {
+	public HotelesPage clickBuscar() {
 		btnBuscar.click();
-		return new PageHoteles(this.driver);
+		return new HotelesPage(this.driver);
+	}
+	
+	public void links() throws MalformedURLException, IOException {
+		System.out.println("cantidad de links " + linksList.size());
+		Helper.testLinks(linksList);
 	}
 }
