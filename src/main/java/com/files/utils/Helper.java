@@ -16,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 
 public class Helper {
 	
@@ -37,6 +38,7 @@ public class Helper {
 			  int responseCode = httpConection.getResponseCode();
 			  System.out.println(i.getText() + " " + i.getAttribute("href"));
 			  System.out.println(responseCode);
+			  Reporter.log(i.getText() + " " + i.getAttribute("href"));
 			  Assert.assertEquals(200, responseCode, "el link está roto");
 			  }
 		}

@@ -32,7 +32,7 @@ public class Alojamiento {
 	}
   
   @Test(priority =  1, description = "validar happy path de alojamiento", enabled = true, dataProvider = "data",
-		  groups = {"test", "testAndLinks"}, dataProviderClass = DataProviderTest.class)
+		  groups = "test", dataProviderClass = DataProviderTest.class)
   public void test(String ciudad, String edad) throws InterruptedException{
 	 pageHome.closeModal();
 	 Assert.assertFalse(pageHome.modal().isDisplayed(),"El modal no desapareció");
@@ -63,7 +63,7 @@ public class Alojamiento {
   
   
   @Test(description = "validar url de links del header de la pagina", priority = 2, enabled = true,
-		  groups = {"links", "testAndLinks"})
+		  groups = "links")
   public void printLinks() throws MalformedURLException, IOException {
 	  pageHome.links();
   }
